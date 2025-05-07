@@ -1,0 +1,95 @@
+% selective-encryption.sty
+\ProvidesPackage{selective-encryption}
+
+
+\RequirePackage{kvoptions}
+\RequirePackage{xstring}
+\RequirePackage{hyperref}
+\RequirePackage{xcolor}
+
+\SetupKeyvalOptions{
+  family=selectiveencryption,
+  prefix=selectiveencryption@
+}
+
+% Define two options: encrypt and color
+\DeclareStringOption[0]{encrypt} % Default: encrypt=0
+\DeclareStringOption[black]{color} % Default: color=black
+
+\ProcessKeyvalOptions*
+
+\makeatletter
+
+% Assign option values to internal macros
+\newcount\c@encryptlevel
+\c@encryptlevel=\selectiveencryption@encrypt\relax
+
+\def\encrypt@color{\selectiveencryption@color}
+
+% Define the encryption text command
+\newcommand{\encryptedtext}[1]{%
+  \ifcase\c@encryptlevel
+    #1%Level 0: output raw text
+  \or
+    \StrLen{#1}[\mylen]%
+    \def\mysymbol{\textcolor{\encrypt@color}{*}}%
+    \@tempcnta=0
+    \@whilenum \@tempcnta < \mylen \do {%
+      \mysymbol
+      \advance\@tempcnta by 1
+    }%
+  \or
+    \StrLen{#1}[\mylen]%
+    \def\mysymbol{\textcolor{\encrypt@color}{\#}}%
+    \@tempcnta=0
+    \@whilenum \@tempcnta < \mylen \do {%
+      \mysymbol
+      \advance\@tempcnta by 1
+    }%
+  \or
+    \StrLen{#1}[\mylen]%
+    \def\mysymbol{\textcolor{\encrypt@color}{\rule{1.5ex}{1.5ex}}}%
+    \@tempcnta=0
+    \@whilenum \@tempcnta < \mylen \do {%
+      \mysymbol
+      \advance\@tempcnta by 1
+    }%
+  \fi
+}
+
+\newcommand{\textE}[1]{\encryptedtext{#1}}
+
+% Encrypted version of hyperlinks
+\newcommand{\linkE}[2]{%
+  \ifcase\c@encryptlevel
+    \href{#1}{#2}% Level 0: display normal link
+  \or
+    \StrLen{#1}[\mylen]%
+    \def\mysymbol{\textcolor{\encrypt@color}{*}}%
+    \@tempcnta=0
+    \@whilenum \@tempcnta < \mylen \do {%
+      \mysymbol
+      \advance\@tempcnta by 1
+    }%
+  \or
+    \StrLen{#2}[\mylen]%
+    \def\mysymbol{\textcolor{\encrypt@color}{\#}}%
+    \@tempcnta=0
+    \@whilenum \@tempcnta < \mylen \do {%
+      \mysymbol
+      \advance\@tempcnta by 1
+    }%
+  \or
+    \StrLen{#2}[\mylen]%
+    \def\mysymbol{\textcolor{\encrypt@color}{\rule{1.2ex}{1.5ex}}}%
+    \@tempcnta=0
+    \@whilenum \@tempcnta < \mylen \do {%
+      \mysymbol
+      \advance\@tempcnta by 1
+    }%
+  \fi
+}
+
+\makeatother
+
+\endinput
