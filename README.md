@@ -1,7 +1,7 @@
-# 🛡️ LaTeX Selective Encryption Package (JMOI_2505C)
+# JMOI_2505C | 🛡️ LaTeX Selective Encryption Package
 This README.md was generated with the help of ChatGPT.
 
-A simple, customizable LaTeX package to selectively **"encrypt" sensitive text or hyperlinks** in your document—using asterisks `*`, hashes `#`, or even colored boxes ▮ — while keeping everything else perfectly readable.
+A simple, customizable LaTeX package to selectively **"encrypt" sensitive text or hyperlinks** in your document—using asterisks `*`, hashes `#`, or even filled boxes ▮ — while keeping everything else perfectly readable.
 
 > Want to hide personal data in your PDF before sharing it? Want anonymized previews of confidential content in a paper draft or public submission?  
 
@@ -12,7 +12,7 @@ A simple, customizable LaTeX package to selectively **"encrypt" sensitive text o
 ## ✨ Features
 
 ✅ Selective encryption of **text** and **hyperlinks**  
-✅ Choose your **encryption style**: asterisk `*`, hash `#`, or black box `■`  
+✅ Choose your **encryption style**: asterisk `*`, hash `#`, or filled box `■`  
 ✅ Fully **customizable encryption color**  
 ✅ Encryption level can be **turned off** without modifying your source code  
 
@@ -61,7 +61,7 @@ This package defines two main commands:
 
 ### 🔢 Encryption Types
 
-You can switch encryption modes using the encrypt option:
+You can switch encryption types using the encrypt option:
 
 | `encrypt` | Effect                         | Appearance Example       |
 |-----------|--------------------------------|--------------------------|
@@ -128,7 +128,7 @@ Latex-Selective-Encryption-Package/
 ## 📌 Use Cases
 
 - Publishing drafts with anonymized author names or links
-- Hiding email addresses or GitHub links in public slides
+- Hiding sensitive information in public slides
 - Creating versions of a document with different privacy levels
 
 ---
@@ -142,4 +142,5 @@ This package is released under the MIT License. Free to use, modify, and distrib
 ## ✏️ Author
 
 Created by Yunqing Jia
+
 GitHub: [@Yunqing-Jia](https://github.com/Yunqing-Jia)
