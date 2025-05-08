@@ -127,7 +127,7 @@ Latex-Selective-Encryption-Package/
 
 ## 📌 Use Cases
 
-- Publishing drafts with anonymized author names or links
+- Publishing reports with redacted content
 - Hiding sensitive information in public slides
 - Creating versions of a document with different privacy levels
 
